@@ -1,0 +1,107 @@
+👤 Utilisateur
+
+(regroupe élèves et formateurs)
+
+id
+
+nom
+
+prénom
+
+email
+
+mot_de_passe
+
+rôle → ELEVE | FORMATEUR | ADMIN
+
+date_creation
+
+actif
+
+👉 Avantage : un seul système d’authentification
+
+📘 Cours
+
+id
+
+titre
+
+description
+
+niveau (débutant, intermédiaire, avancé)
+
+formateur_id
+
+date_creation
+
+publié (bool)
+
+👉 Un cours appartient à un formateur
+
+📂 Chapitre
+
+id
+
+titre
+
+ordre
+
+cours_id
+
+👉 Un cours contient plusieurs chapitres
+
+📄 Page (contenu pédagogique)
+
+id
+
+titre
+
+contenu (HTML ou Markdown)
+
+ordre
+
+chapitre_id
+
+type (texte, video, pdf, code)
+
+👉 Un chapitre contient plusieurs pages
+
+🧠 Exercice
+
+id
+
+question
+
+type (qcm, texte, code)
+
+reponse_attendue
+
+correction
+
+chapitre_id
+
+📝 TentativeExercice
+
+id
+
+eleve_id
+
+exercice_id
+
+reponse_donnee
+
+score
+
+date
+
+🎓 Inscription
+
+id
+
+eleve_id
+
+cours_id
+
+progression (en %)
+
+date_inscription

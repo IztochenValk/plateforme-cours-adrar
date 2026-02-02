@@ -1,0 +1,2954 @@
+📦 EXPORT DU PROJET
+📁 Racine: .
+📅 Généré le: Mon, Feb  2, 2026  9:13:13 PM
+========================================
+
+📂 STRUCTURE DU PROJET
+----------------------------------------
+📁 backend
+  📄 Dockerfile
+  📁 skillforge
+    📄 HELP.md
+    📄 mvnw
+    📄 mvnw.cmd
+    📄 pom.xml
+    📁 src
+      📁 main
+        📁 java
+          📁 com
+            📁 adrar
+              📁 skillforge
+                📁 api
+                  📄 ApiError.java
+                  📄 PaginationRequest.java
+                📁 controller
+                  📄 AdminUserController.java
+                  📄 AuthController.java
+                  📄 CourseController.java
+                  📄 LessonController.java
+                  📄 UserController.java
+                📁 domain
+                  📄 classes
+                📁 dto
+                  📁 auth
+                    📄 AuthResponse.java
+                    📄 LoginRequest.java
+                    📄 RegisterRequest.java
+                  📁 course
+                    📄 CourseResponse.java
+                    📄 CreateCourseRequest.java
+                    📄 ModuleTreeResponse.java
+                    📄 PatchCourseRequest.java
+                    📄 UpdateCourseRequest.java
+                  📁 lesson
+                    📄 CreateLessonRequest.java
+                    📄 LessonResponse.java
+                    📄 PatchLessonRequest.java
+                  📁 module
+                    📄 CreateModuleRequest.java
+                    📄 ModuleResponse.java
+                    📄 PatchModuleRequest.java
+                  📁 user
+                    📄 CreateUserRequest.java
+                    📄 PatchUserRequest.java
+                    📄 SetUserRolesRequest.java
+                    📄 UpdateUserRequest.java
+                    📄 UserResponse.java
+                📁 entity
+                  📄 Course.java
+                  📄 Lesson.java
+                  📄 Module.java
+                  📄 Role.java
+                  📄 User.java
+                📁 exception
+                  📄 BadRequestException.java
+                  📄 ConflictException.java
+                  📄 GlobalExceptionHandler.java
+                  📄 NotFoundException.java
+                📁 repository
+                  📄 CourseRepository.java
+                  📄 LessonRepository.java
+                  📄 ModuleRepository.java
+                  📄 UserRepository.java
+                📁 security
+                  📁 jwt
+                    📄 JwtAuthFilter.java
+                    📄 JwtService.java
+                  📄 SecurityConfig.java
+                  📁 user
+                    📄 CustomUserDetails.java
+                    📄 CustomUserDetailsService.java
+                📁 service
+                  📁 course
+                    📄 CourseService.java
+                    📄 CourseServiceImp.java
+                    📄 CourseTreeResponse.java
+                    📄 LessonTreeResponse.java
+                  📁 lesson
+                    📄 LessonService.java
+                    📄 LessonServiceImp.java
+                  📁 module
+                    📄 ModuleService.java
+                    📄 ModuleServiceImp.java
+                  📁 user
+                    📄 UserService.java
+                    📄 UserServiceImp.java
+                    📄 UserValidator.java
+                📄 SkillforgeApplication.java
+        📁 resources
+          📄 application.properties
+      📁 test
+        📁 java
+          📁 com
+            📁 adrar
+              📁 skillforge
+                📄 SkillforgeApplicationTests.java
+📄 docker-compose.yaml
+📄 project-export.txt
+📄 project-export-full.sh
+
+📜 CONTENU DES FICHIERS
+----------------------------------------
+========================================
+📄 FILE: ./backend/skillforge/HELP.md
+========================================
+# Getting Started
+
+### Reference Documentation
+For further reference, please consider the following sections:
+
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/4.0.2/maven-plugin)
+* [Create an OCI image](https://docs.spring.io/spring-boot/4.0.2/maven-plugin/build-image.html)
+
+### Maven Parent overrides
+
+Due to Maven's design, elements are inherited from the parent POM to the project POM.
+While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
+To prevent this, the project POM contains empty overrides for these elements.
+If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/pom.xml
+========================================
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.adrar.skillforge</groupId>
+	<artifactId>skillforge</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>skillforge</name>
+	<description>Plateforme moderne de formation et de suivi de compétences.</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.f4b6a3</groupId>
+			<artifactId>uuid-creator</artifactId>
+			<version>5.3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.199</version>
+		</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-api</artifactId>
+  <version>0.11.5</version>
+</dependency>
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-impl</artifactId>
+  <version>0.11.5</version>
+  <scope>runtime</scope>
+</dependency>
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-jackson</artifactId>
+  <version>0.11.5</version>
+  <scope>runtime</scope>
+</dependency>
+
+ </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/api/ApiError.java
+========================================
+package com.adrar.skillforge.api;
+
+import java.time.Instant;
+import java.util.Map;
+
+public record ApiError(
+    Instant timestamp,
+    int status,
+    String error,
+    String message,
+    String path,
+    Map<String, Object> details
+) {
+    public static ApiError of(int status, String error, String message, String path, Map<String, Object> details) {
+        return new ApiError(Instant.now(), status, error, message, path, details);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/api/PaginationRequest.java
+========================================
+package com.adrar.skillforge.api;
+
+import com.adrar.skillforge.exception.BadRequestException;
+import org.springframework.data.domain.Pageable;
+
+public final class PaginationRequest {
+
+    public static final int MAX_SIZE = 50;
+
+    private PaginationRequest() {
+    }
+
+    public static Pageable enforce(Pageable pageable) {
+        if (pageable == null) {
+            throw new BadRequestException("Paramètres de pagination manquants.");
+        }
+
+        int page = pageable.getPageNumber();
+        int size = pageable.getPageSize();
+
+        if (page < 0) {
+            throw new BadRequestException("Le paramètre page doit être >= 0.");
+        }
+
+        if (size < 1) {
+            throw new BadRequestException("Le paramètre size doit être >= 1.");
+        }
+
+        if (size > MAX_SIZE) {
+            throw new BadRequestException("Le paramètre size ne doit pas dépasser " + MAX_SIZE + ".");
+        }
+
+        return pageable;
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/controller/AdminUserController.java
+========================================
+package com.adrar.skillforge.controller;
+
+import com.adrar.skillforge.dto.user.SetUserRolesRequest;
+import com.adrar.skillforge.dto.user.UserResponse;
+import com.adrar.skillforge.entity.User;
+import com.adrar.skillforge.service.user.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/admin/users")
+public class AdminUserController {
+
+    private final UserService userService;
+
+    public AdminUserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PutMapping("/{publicId}/roles")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserResponse> setRoles(
+        @PathVariable UUID publicId,
+        @Valid @RequestBody SetUserRolesRequest request
+    ) {
+        userService.setRoles(publicId, request.roles());
+        User updated = userService.findByPublicId(publicId);
+        return ResponseEntity.ok(UserResponse.from(updated));
+    }
+
+    @PostMapping("/{publicId}/roles/{role}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserResponse> addRole(
+        @PathVariable UUID publicId,
+        @PathVariable String role
+    ) {
+        User updated = userService.addRole(publicId, role);
+        return ResponseEntity.ok(UserResponse.from(updated));
+    }
+
+    @DeleteMapping("/{publicId}/roles/{role}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserResponse> removeRole(
+        @PathVariable UUID publicId,
+        @PathVariable String role
+    ) {
+        User updated = userService.removeRole(publicId, role);
+        return ResponseEntity.ok(UserResponse.from(updated));
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/controller/AuthController.java
+========================================
+package com.adrar.skillforge.controller;
+
+import com.adrar.skillforge.dto.auth.AuthResponse;
+import com.adrar.skillforge.dto.auth.LoginRequest;
+import com.adrar.skillforge.dto.auth.RegisterRequest;
+import com.adrar.skillforge.dto.user.UserResponse;
+import com.adrar.skillforge.security.jwt.JwtService;
+import com.adrar.skillforge.security.user.CustomUserDetails;
+import com.adrar.skillforge.service.user.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
+    private final UserService userService;
+
+    public AuthController(
+        AuthenticationManager authenticationManager,
+        JwtService jwtService,
+        UserService userService
+    ) {
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+        this.userService = userService;
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest request) {
+        var created = userService.create(request.toCreateUserRequest());
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserResponse.from(created));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+
+        Authentication auth = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.identifier(), request.password())
+        );
+
+        CustomUserDetails principal = (CustomUserDetails) auth.getPrincipal();
+
+        Set<String> roles = principal.getAuthorities().stream()
+            .map(a -> a.getAuthority())
+            .collect(Collectors.toSet());
+
+        String token = jwtService.generateToken(principal.getUsername(), roles);
+
+        AuthResponse response = new AuthResponse(
+            token,
+            "Bearer",
+            principal.getUsername(),
+            principal.getEmail(),
+            roles
+        );
+
+        return ResponseEntity.ok(response);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/controller/CourseController.java
+========================================
+package com.adrar.skillforge.controller;
+
+import com.adrar.skillforge.api.PaginationRequest;
+import com.adrar.skillforge.dto.course.CourseResponse;
+import com.adrar.skillforge.dto.course.CourseTreeResponse;
+import com.adrar.skillforge.dto.course.CreateCourseRequest;
+import com.adrar.skillforge.dto.course.PatchCourseRequest;
+import com.adrar.skillforge.dto.course.UpdateCourseRequest;
+import com.adrar.skillforge.entity.Course;
+import com.adrar.skillforge.service.course.CourseService;
+
+import jakarta.validation.Valid;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/courses")
+public class CourseController {
+
+    private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<CourseResponse>> findAll(Pageable pageable) {
+        Pageable safe = PaginationRequest.enforce(pageable);
+
+        Page<CourseResponse> page = courseService.findAll(safe)
+            .map(CourseResponse::from);
+
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/tree")
+    public ResponseEntity<Page<CourseTreeResponse>> getTrees(Pageable pageable) {
+        Pageable safe = PaginationRequest.enforce(pageable);
+        return ResponseEntity.ok(courseService.getTrees(safe));
+    }
+
+    @GetMapping("/{publicId}")
+    public ResponseEntity<CourseResponse> findByPublicId(@PathVariable UUID publicId) {
+        Course course = courseService.findByPublicId(publicId);
+        return ResponseEntity.ok(CourseResponse.from(course));
+    }
+
+    @GetMapping("/{publicId}/tree")
+    public ResponseEntity<CourseTreeResponse> getTree(@PathVariable UUID publicId) {
+        return ResponseEntity.ok(courseService.getTree(publicId));
+    }
+
+    @PostMapping
+    public ResponseEntity<CourseResponse> create(@Valid @RequestBody CreateCourseRequest request) {
+        Course created = courseService.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(CourseResponse.from(created));
+    }
+
+    @PutMapping("/{publicId}")
+    public ResponseEntity<CourseResponse> update(
+        @PathVariable UUID publicId,
+        @Valid @RequestBody UpdateCourseRequest request
+    ) {
+        Course updated = courseService.update(publicId, request);
+        return ResponseEntity.ok(CourseResponse.from(updated));
+    }
+
+    @PatchMapping("/{publicId}")
+    public ResponseEntity<CourseResponse> patch(
+        @PathVariable UUID publicId,
+        @Valid @RequestBody PatchCourseRequest request
+    ) {
+        Course updated = courseService.patch(publicId, request);
+        return ResponseEntity.ok(CourseResponse.from(updated));
+    }
+
+    @DeleteMapping("/{publicId}")
+    public ResponseEntity<Void> delete(@PathVariable UUID publicId) {
+        courseService.deleteByPublicId(publicId);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/controller/LessonController.java
+========================================
+package com.adrar.skillforge.controller;
+
+import com.adrar.skillforge.dto.lesson.CreateLessonRequest;
+import com.adrar.skillforge.dto.lesson.LessonResponse;
+import com.adrar.skillforge.dto.lesson.PatchLessonRequest;
+import com.adrar.skillforge.entity.Lesson;
+import com.adrar.skillforge.service.lesson.LessonService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api")
+public class LessonController {
+
+    private final LessonService lessonService;
+
+    public LessonController(LessonService lessonService) {
+        this.lessonService = lessonService;
+    }
+
+    @GetMapping("/modules/{modulePublicId}/lessons")
+    public ResponseEntity<List<LessonResponse>> findAllByModule(
+        @PathVariable UUID modulePublicId
+    ) {
+        List<LessonResponse> lessons = lessonService.findAllByModule(modulePublicId)
+            .stream()
+            .map(LessonResponse::from)
+            .toList();
+
+        return ResponseEntity.ok(lessons);
+    }
+
+    @PostMapping("/modules/{modulePublicId}/lessons")
+    public ResponseEntity<LessonResponse> create(
+        @PathVariable UUID modulePublicId,
+        @Valid @RequestBody CreateLessonRequest request
+    ) {
+        Lesson created = lessonService.create(modulePublicId, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(LessonResponse.from(created));
+    }
+
+    @PatchMapping("/lessons/{lessonPublicId}")
+    public ResponseEntity<LessonResponse> patch(
+        @PathVariable UUID lessonPublicId,
+        @Valid @RequestBody PatchLessonRequest request
+    ) {
+        Lesson updated = lessonService.patch(lessonPublicId, request);
+        return ResponseEntity.ok(LessonResponse.from(updated));
+    }
+
+    @DeleteMapping("/lessons/{lessonPublicId}")
+    public ResponseEntity<Void> delete(@PathVariable UUID lessonPublicId) {
+        lessonService.delete(lessonPublicId);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/controller/UserController.java
+========================================
+package com.adrar.skillforge.controller;
+
+import com.adrar.skillforge.dto.user.CreateUserRequest;
+import com.adrar.skillforge.dto.user.PatchUserRequest;
+import com.adrar.skillforge.dto.user.UpdateUserRequest;
+import com.adrar.skillforge.dto.user.UserResponse;
+import com.adrar.skillforge.entity.User;
+import com.adrar.skillforge.service.user.UserService;
+
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserResponse>> findAll() {
+        List<UserResponse> users = userService.findAll()
+            .stream()
+            .map(UserResponse::from)
+            .toList();
+
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{publicId}")
+    public ResponseEntity<UserResponse> findByPublicId(@PathVariable UUID publicId) {
+        User user = userService.findByPublicId(publicId);
+        return ResponseEntity.ok(UserResponse.from(user));
+    }
+
+    @PostMapping
+    public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest request) {
+        User created = userService.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserResponse.from(created));
+    }
+
+    @PutMapping("/{publicId}")
+    public ResponseEntity<UserResponse> update(
+        @PathVariable UUID publicId,
+        @Valid @RequestBody UpdateUserRequest request
+    ) {
+        User updated = userService.update(publicId, request);
+        return ResponseEntity.ok(UserResponse.from(updated));
+    }
+
+    @PatchMapping("/{publicId}")
+    public ResponseEntity<UserResponse> patch(
+        @PathVariable UUID publicId,
+        @Valid @RequestBody PatchUserRequest request
+    ) {
+        User updated = userService.patch(publicId, request);
+        return ResponseEntity.ok(UserResponse.from(updated));
+    }
+
+    @DeleteMapping("/{publicId}")
+    public ResponseEntity<Void> delete(@PathVariable UUID publicId) {
+        userService.deleteByPublicId(publicId);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/auth/AuthResponse.java
+========================================
+package com.adrar.skillforge.dto.auth;
+
+import java.util.Set;
+
+public record AuthResponse(
+    String token,
+    String tokenType,
+    String username,
+    String email,
+    Set<String> roles
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/auth/LoginRequest.java
+========================================
+package com.adrar.skillforge.dto.auth;
+
+import jakarta.validation.constraints.NotBlank;
+
+public record LoginRequest(
+    @NotBlank(message = "Identifiant requis.")
+    String identifier,
+
+    @NotBlank(message = "Mot de passe requis.")
+    String password
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/auth/RegisterRequest.java
+========================================
+package com.adrar.skillforge.dto.auth;
+
+import com.adrar.skillforge.dto.user.CreateUserRequest;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record RegisterRequest(
+    @NotBlank(message = "Un identifiant est requis.")
+    @Size(min = 3, max = 50, message = "Votre identifiant doit être compris entre 3 et 50 caractères.")
+    String username,
+
+    @NotBlank(message = "Un email est requis.")
+    @Email(message = "Votre email doit avoir un format valide.")
+    String email,
+
+    @NotBlank(message = "Un mot de passe est requis")
+    @Size(min = 8, message = "Votre mot de passe doit contenir au moins 8 caractères")
+    String password
+) {
+    public CreateUserRequest toCreateUserRequest() {
+        return new CreateUserRequest(username, email, password);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/course/CourseResponse.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import com.adrar.skillforge.entity.Course;
+
+import java.time.Instant;
+import java.util.UUID;
+
+public record CourseResponse(
+    UUID publicId,
+    String title,
+    String description,
+    Instant createdAt
+) {
+    public static CourseResponse from(Course course) {
+        return new CourseResponse(
+            course.getPublicId(),
+            course.getTitle(),
+            course.getDescription(),
+            course.getCreatedAt()
+        );
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/course/CreateCourseRequest.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record CreateCourseRequest(
+    @NotBlank(message = "Un titre est requis.")
+    @Size(min = 3, max = 200, message = "Le titre doit être compris entre 3 et 200 caractères.")
+    String title,
+
+    @Size(max = 4000, message = "La description ne doit pas dépasser 4000 caractères.")
+    String description
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/course/ModuleTreeResponse.java
+========================================
+package com.adrar.skillforge.exception;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+public record ModuleTreeResponse(
+    UUID publicId,
+    String title,
+    Integer position,
+    Instant createdAt,
+    List<LessonTreeResponse> lessons
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/course/PatchCourseRequest.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import jakarta.validation.constraints.Size;
+
+public record PatchCourseRequest(
+    @Size(min = 3, max = 200, message = "Le titre doit être compris entre 3 et 200 caractères.")
+    String title,
+
+    @Size(max = 4000, message = "La description ne doit pas dépasser 4000 caractères.")
+    String description
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/course/UpdateCourseRequest.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record UpdateCourseRequest(
+    @NotBlank(message = "Un titre est requis.")
+    @Size(min = 3, max = 200, message = "Le titre doit être compris entre 3 et 200 caractères.")
+    String title,
+
+    @Size(max = 4000, message = "La description ne doit pas dépasser 4000 caractères.")
+    String description
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/lesson/CreateLessonRequest.java
+========================================
+package com.adrar.skillforge.dto.lesson;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+
+public record CreateLessonRequest(
+    @NotBlank(message = "Un titre est requis.")
+    String title,
+
+    @Positive(message = "La position doit être positive.")
+    Integer position,
+
+    String content
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/lesson/LessonResponse.java
+========================================
+package com.adrar.skillforge.dto.lesson;
+
+import com.adrar.skillforge.entity.Lesson;
+
+import java.time.Instant;
+import java.util.UUID;
+
+public record LessonResponse(
+    UUID publicId,
+    UUID modulePublicId,
+    String title,
+    Integer position,
+    String content,
+    Instant createdAt
+) {
+    public static LessonResponse from(Lesson lesson) {
+        return new LessonResponse(
+            lesson.getPublicId(),
+            lesson.getModule().getPublicId(),
+            lesson.getTitle(),
+            lesson.getPosition(),
+            lesson.getContent(),
+            lesson.getCreatedAt()
+        );
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/lesson/PatchLessonRequest.java
+========================================
+package com.adrar.skillforge.dto.lesson;
+
+import jakarta.validation.constraints.Positive;
+
+public record PatchLessonRequest(
+    String title,
+
+    @Positive(message = "La position doit être positive.")
+    Integer position,
+
+    String content
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/module/CreateModuleRequest.java
+========================================
+package com.adrar.skillforge.dto.module;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+public record CreateModuleRequest(
+    @NotBlank(message = "Un titre est requis.")
+    String title,
+
+    @Positive(message = "La position doit être positive.")
+    Integer position
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/module/ModuleResponse.java
+========================================
+package com.adrar.skillforge.dto.module;
+
+import com.adrar.skillforge.entity.Module;
+import java.time.Instant;
+import java.util.UUID;
+
+public record ModuleResponse(
+    UUID publicId,
+    UUID coursePublicId,
+    String title,
+    Integer position,
+    Instant createdAt
+) {
+    public static ModuleResponse from(Module module) {
+        return new ModuleResponse(
+            module.getPublicId(),
+            module.getCourse().getPublicId(),
+            module.getTitle(),
+            module.getPosition(),
+            module.getCreatedAt()
+        );
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/module/PatchModuleRequest.java
+========================================
+package com.adrar.skillforge.dto.module;
+
+import jakarta.validation.constraints.Positive;
+
+public record PatchModuleRequest(
+    String title,
+
+    @Positive(message = "La position doit être positive.")
+    Integer position
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/user/CreateUserRequest.java
+========================================
+// src/main/java/com/adrar/skillforge/dto/user/CreateUserRequest.java
+package com.adrar.skillforge.dto.user;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record CreateUserRequest(
+        @NotBlank(message = "Un identifiant est requis.")
+        @Size(min = 3, max = 50, message = "Votre identifiant doit être compris entre 3 et 50 caractères.")
+        String username,
+
+        @NotBlank(message = "Un email est requis.")
+        @Email(message = "Votre email doit avoir un format valide.")
+        String email,
+
+        @NotBlank(message = "Un mot de passe est requis")
+        @Size(min = 8, message = "Votre mot de passe doit contenir au moins 8 caractères")
+        String password
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/user/PatchUserRequest.java
+========================================
+package com.adrar.skillforge.dto.user;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+
+public record PatchUserRequest(
+    @Size(min = 3, max = 50, message = "Votre identifiant doit être compris entre 3 et 50 caractères.")
+    String username,
+
+    @Email(message = "Le format de l'email n'est pas valide.")
+    String email
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/user/SetUserRolesRequest.java
+========================================
+package com.adrar.skillforge.dto.user;
+
+import jakarta.validation.constraints.NotEmpty;
+import java.util.Set;
+
+public record SetUserRolesRequest(
+    @NotEmpty(message = "La liste des rôles ne peut pas être vide.")
+    Set<String> roles
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/user/UpdateUserRequest.java
+========================================
+package com.adrar.skillforge.dto.user;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record UpdateUserRequest(
+    @NotBlank(message = "Un identifiant est requis.")
+    @Size(min = 3, max = 50, message = "Votre identifiant doit être compris entre 3 et 50 caractères.")
+    String username,
+
+    @NotBlank(message = "Un email est requis.")
+    @Email(message = "Le format de l'email n'est pas valide")
+    String email
+) {
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/dto/user/UserResponse.java
+========================================
+package com.adrar.skillforge.dto.user;
+
+import com.adrar.skillforge.entity.User;
+
+import java.time.Instant;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+public record UserResponse(
+    UUID publicId,
+    String username,
+    String email,
+    Instant createdAt,
+    Set<String> roles
+) {
+    public static UserResponse from(User user) {
+        Set<String> roles = user.getRoles() == null
+            ? Set.of()
+            : user.getRoles().stream()
+                .map(Enum::name)
+                .collect(Collectors.toSet());
+
+        return new UserResponse(
+            user.getPublicId(),
+            user.getUsername(),
+            user.getEmail(),
+            user.getCreatedAt(),
+            roles
+        );
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/entity/Course.java
+========================================
+package com.adrar.skillforge.entity;
+
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Table(name = "courses")
+public class Course {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courses_seq")
+    @SequenceGenerator(
+        name = "courses_seq",
+        sequenceName = "courses_seq_id",
+        allocationSize = 1
+    )
+    private Long id;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private UUID publicId;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(length = 4000)
+    private String description;
+
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("position ASC")
+    private List<Module> modules = new ArrayList<>();
+
+    protected Course() {
+    }
+
+    public Course(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.publicId == null) this.publicId = UUID.randomUUID();
+        if (this.createdAt == null) this.createdAt = Instant.now();
+        if (this.modules == null) this.modules = new ArrayList<>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<Module> getModules() {
+        return modules;
+    }
+
+    public void addModule(Module module) {
+        if (module == null) return;
+        module.setCourse(this);
+        this.modules.add(module);
+    }
+
+    public void removeModule(Module module) {
+        if (module == null) return;
+        this.modules.remove(module);
+        module.setCourse(null);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/entity/Lesson.java
+========================================
+package com.adrar.skillforge.entity;
+
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
+@Table(name = "lessons")
+public class Lesson {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lessons_seq")
+    @SequenceGenerator(
+        name = "lessons_seq",
+        sequenceName = "lessons_seq_id",
+        allocationSize = 1
+    )
+    private Long id;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private UUID publicId;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "module_id", nullable = false)
+    private Module module;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private Integer position;
+
+    @Column(length = 10000)
+    private String content;
+
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
+
+    protected Lesson() {
+    }
+
+    public Lesson(String title, Integer position, String content) {
+        this.title = title;
+        this.position = position;
+        this.content = content;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.publicId == null) this.publicId = UUID.randomUUID();
+        if (this.createdAt == null) this.createdAt = Instant.now();
+        if (this.position == null) this.position = 1;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/entity/Module.java
+========================================
+package com.adrar.skillforge.entity;
+
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Table(name = "modules")
+public class Module {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "modules_seq")
+    @SequenceGenerator(
+        name = "modules_seq",
+        sequenceName = "modules_seq_id",
+        allocationSize = 1
+    )
+    private Long id;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private UUID publicId;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private Integer position;
+
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("position ASC")
+    private List<Lesson> lessons = new ArrayList<>();
+
+    protected Module() {
+    }
+
+    public Module(String title, Integer position) {
+        this.title = title;
+        this.position = position;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.publicId == null) this.publicId = UUID.randomUUID();
+        if (this.createdAt == null) this.createdAt = Instant.now();
+        if (this.lessons == null) this.lessons = new ArrayList<>();
+        if (this.position == null) this.position = 1;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void addLesson(Lesson lesson) {
+        if (lesson == null) return;
+        lesson.setModule(this);
+        this.lessons.add(lesson);
+    }
+
+    public void removeLesson(Lesson lesson) {
+        if (lesson == null) return;
+        this.lessons.remove(lesson);
+        lesson.setModule(null);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/entity/Role.java
+========================================
+package com.adrar.skillforge.entity;
+
+public enum Role {
+    STUDENT,
+    TEACHER,
+    ADMIN
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/entity/User.java
+========================================
+package com.adrar.skillforge.entity;
+
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
+    @SequenceGenerator(
+        name = "users_seq",
+        sequenceName = "users_seq_id",
+        allocationSize = 1
+    )
+    private Long id;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private UUID publicId;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+    @CollectionTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id")
+    )
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Set<Role> roles = new HashSet<>();
+
+    protected User() {
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.publicId == null) this.publicId = UUID.randomUUID();
+        if (this.createdAt == null) this.createdAt = Instant.now();
+        if (this.roles == null) this.roles = new HashSet<>();
+        if (this.roles.isEmpty()) this.roles.add(Role.STUDENT);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(UUID publicId) {
+        this.publicId = publicId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        if (this.roles == null) this.roles = new HashSet<>();
+        this.roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        if (this.roles == null) return;
+        this.roles.remove(role);
+    }
+
+    public boolean hasRole(Role role) {
+        return this.roles != null && this.roles.contains(role);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/exception/BadRequestException.java
+========================================
+package com.adrar.skillforge.exception;
+
+public class BadRequestException extends RuntimeException {
+    public BadRequestException(String message) {
+        super(message);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/exception/ConflictException.java
+========================================
+package com.adrar.skillforge.exception;
+
+public class ConflictException extends RuntimeException {
+    public ConflictException(String message) {
+        super(message);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/exception/GlobalExceptionHandler.java
+========================================
+package com.adrar.skillforge.exception;
+
+import com.adrar.skillforge.exception.BadRequestException;
+import com.adrar.skillforge.exception.ConflictException;
+import com.adrar.skillforge.exception.NotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiError> handleValidation(MethodArgumentNotValidException ex, HttpServletRequest req) {
+        Map<String, Object> details = new LinkedHashMap<>();
+
+        Map<String, String> fieldErrors = new LinkedHashMap<>();
+        for (FieldError fe : ex.getBindingResult().getFieldErrors()) {
+            fieldErrors.put(fe.getField(), fe.getDefaultMessage());
+        }
+        details.put("fieldErrors", fieldErrors);
+
+        ApiError body = ApiError.of(
+            HttpStatus.BAD_REQUEST.value(),
+            "VALIDATION_ERROR",
+            "Requête invalide.",
+            req.getRequestURI(),
+            details
+        );
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiError> handleNotFound(NotFoundException ex, HttpServletRequest req) {
+        ApiError body = ApiError.of(
+            HttpStatus.NOT_FOUND.value(),
+            "NOT_FOUND",
+            ex.getMessage(),
+            req.getRequestURI(),
+            Map.of()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ApiError> handleConflict(ConflictException ex, HttpServletRequest req) {
+        ApiError body = ApiError.of(
+            HttpStatus.CONFLICT.value(),
+            "CONFLICT",
+            ex.getMessage(),
+            req.getRequestURI(),
+            Map.of()
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ApiError> handleBadRequest(BadRequestException ex, HttpServletRequest req) {
+        ApiError body = ApiError.of(
+            HttpStatus.BAD_REQUEST.value(),
+            "BAD_REQUEST",
+            ex.getMessage(),
+            req.getRequestURI(),
+            Map.of()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handleGeneric(Exception ex, HttpServletRequest req) {
+        ApiError body = ApiError.of(
+            HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            "INTERNAL_ERROR",
+            "Une erreur interne est survenue.",
+            req.getRequestURI(),
+            Map.of()
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/exception/NotFoundException.java
+========================================
+package com.adrar.skillforge.exception;
+
+public class NotFoundException extends RuntimeException {
+    public NotFoundException(String message) {
+        super(message);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/repository/CourseRepository.java
+========================================
+package com.adrar.skillforge.repository;
+
+import com.adrar.skillforge.entity.Course;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+
+    boolean existsByPublicId(UUID publicId);
+
+    Optional<Course> findByPublicId(UUID publicId);
+
+    void deleteByPublicId(UUID publicId);
+
+    @Query("""
+        select distinct c
+        from Course c
+        left join fetch c.modules m
+        left join fetch m.lessons l
+        where c.publicId = :publicId
+        """)
+    Optional<Course> findTreeByPublicId(@Param("publicId") UUID publicId);
+
+    @Query("""
+        select distinct c
+        from Course c
+        left join fetch c.modules m
+        left join fetch m.lessons l
+        """)
+    List<Course> findAllTrees();
+
+    @Query("""
+        select distinct c
+        from Course c
+        left join fetch c.modules m
+        left join fetch m.lessons l
+        where c.publicId in :publicIds
+        """)
+    List<Course> findTreesByPublicIds(@Param("publicIds") List<UUID> publicIds);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/repository/LessonRepository.java
+========================================
+package com.adrar.skillforge.repository;
+
+import com.adrar.skillforge.entity.Lesson;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface LessonRepository extends JpaRepository<Lesson, Long> {
+    Optional<Lesson> findByPublicId(UUID publicId);
+    boolean existsByPublicId(UUID publicId);
+    void deleteByPublicId(UUID publicId);
+
+    List<Lesson> findAllByModule_PublicIdOrderByPositionAsc(UUID modulePublicId);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/repository/ModuleRepository.java
+========================================
+package com.adrar.skillforge.repository;
+
+import com.adrar.skillforge.entity.Module;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface ModuleRepository extends JpaRepository<Module, Long> {
+
+    Optional<Module> findByPublicId(UUID publicId);
+    boolean existsByPublicId(UUID publicId);
+    void deleteByPublicId(UUID publicId);
+
+    List<Module> findAllByCourse_PublicIdOrderByPositionAsc(UUID coursePublicId);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/repository/UserRepository.java
+========================================
+package com.adrar.skillforge.repository;
+
+import com.adrar.skillforge.entity.Role;
+import com.adrar.skillforge.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    boolean existsByEmail(String email);
+    boolean existsByUsername(String username);
+    boolean existsByPublicId(UUID publicId);
+
+    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
+    Optional<User> findByPublicId(UUID publicId);
+
+    void deleteByPublicId(UUID publicId);
+
+    @Query("select distinct u from User u join u.roles r where r = :role")
+    List<User> findAllByRole(@Param("role") Role role);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/security/jwt/JwtAuthFilter.java
+========================================
+package com.adrar.skillforge.security.jwt;
+
+import com.adrar.skillforge.security.user.CustomUserDetailsService;
+import io.jsonwebtoken.JwtException;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final CustomUserDetailsService userDetailsService;
+
+    public JwtAuthFilter(JwtService jwtService, CustomUserDetailsService userDetailsService) {
+        this.jwtService = jwtService;
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws ServletException, IOException {
+
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String token = authHeader.substring(7);
+
+        try {
+            String subject = jwtService.extractSubject(token);
+
+            if (subject != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                var userDetails = userDetailsService.loadUserByUsername(subject);
+
+                var auth = new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        null,
+                        userDetails.getAuthorities()
+                );
+                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        } catch (JwtException ex) {
+            if (!response.isCommitted()) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json");
+                response.getWriter().write("{\"error\":\"Token invalide ou expiré\"}");
+            }
+            return;
+        }
+
+        chain.doFilter(request, response);
+    }
+}
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/security/jwt/JwtService.java
+========================================
+
+package com.adrar.skillforge.security.jwt;
+
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+import java.util.Set;
+
+@Service
+public class JwtService {
+
+    private final Key key;
+    private final long expirationMs;
+
+    public JwtService(
+        @Value("${app.jwt.secret}") String secret,
+        @Value("${app.jwt.expiration-ms}") long expirationMs
+    ) {
+        if (secret == null || secret.length() < 32) {
+            throw new IllegalArgumentException("app.jwt.secret doit faire au moins 32 caractères.");
+        }
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.expirationMs = expirationMs;
+    }
+
+    public String generateToken(String subject, Set<String> roles) {
+        Date now = new Date();
+        Date exp = new Date(now.getTime() + expirationMs);
+
+        return Jwts.builder()
+            .setSubject(subject)
+            .claim("roles", roles)
+            .setIssuedAt(now)
+            .setExpiration(exp)
+            .signWith(key, SignatureAlgorithm.HS256)
+            .compact();
+    }
+
+    public Jws<Claims> parse(String token) {
+        return Jwts.parserBuilder()
+            .setSigningKey(key)
+            .build()
+            .parseClaimsJws(token);
+    }
+
+    public String extractSubject(String token) {
+        return parse(token).getBody().getSubject();
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/security/SecurityConfig.java
+========================================
+package com.adrar.skillforge.security;
+
+import com.adrar.skillforge.security.jwt.JwtAuthFilter;
+import com.adrar.skillforge.security.user.CustomUserDetailsService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableMethodSecurity
+public class SecurityConfig {
+
+    private final JwtAuthFilter jwtAuthFilter;
+    private final CustomUserDetailsService userDetailsService;
+
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter, CustomUserDetailsService userDetailsService) {
+        this.jwtAuthFilter = jwtAuthFilter;
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+        return new ProviderManager(provider);
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/**").permitAll()
+
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/users/**").hasRole("ADMIN")
+
+                .requestMatchers(HttpMethod.GET, "/api/courses/**").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/modules/**").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/lessons/**").authenticated()
+
+                .requestMatchers("/api/courses/**").hasAnyRole("ADMIN", "TEACHER")
+                .requestMatchers("/api/modules/**").hasAnyRole("ADMIN", "TEACHER")
+                .requestMatchers("/api/lessons/**").hasAnyRole("ADMIN", "TEACHER")
+
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/security/user/CustomUserDetails.java
+========================================
+package com.adrar.skillforge.security.user;
+
+import com.adrar.skillforge.entity.Role;
+import com.adrar.skillforge.entity.User;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class CustomUserDetails implements UserDetails {
+
+    private final User user;
+
+    public CustomUserDetails(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<Role> roles = user.getRoles();
+        if (roles == null) return Set.of();
+        return roles.stream()
+            .map(r -> new SimpleGrantedAuthority("ROLE_" + r.name()))
+            .collect(Collectors.toSet());
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
+
+    public String getEmail() {
+        return user.getEmail();
+    }
+
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isAccountNonLocked() { return true; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override public boolean isEnabled() { return true; }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/security/user/CustomUserDetailsService.java
+========================================
+package com.adrar.skillforge.security.user;
+
+import com.adrar.skillforge.entity.User;
+import com.adrar.skillforge.repository.UserRepository;
+import org.springframework.security.core.userdetails.*;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(identifier)
+            .orElseGet(() -> userRepository.findByUsername(identifier)
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"))
+            );
+
+        return new CustomUserDetails(user);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/course/CourseService.java
+========================================
+package com.adrar.skillforge.service.course;
+
+import com.adrar.skillforge.dto.course.CourseTreeResponse;
+import com.adrar.skillforge.dto.course.CreateCourseRequest;
+import com.adrar.skillforge.dto.course.PatchCourseRequest;
+import com.adrar.skillforge.dto.course.UpdateCourseRequest;
+import com.adrar.skillforge.entity.Course;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface CourseService {
+
+    Course findByPublicId(UUID publicId);
+
+    Page<Course> findAll(Pageable pageable);
+
+    Course create(CreateCourseRequest request);
+
+    Course update(UUID publicId, UpdateCourseRequest request);
+
+    Course patch(UUID publicId, PatchCourseRequest request);
+
+    void deleteByPublicId(UUID publicId);
+
+    CourseTreeResponse getTree(UUID coursePublicId);
+
+    List<CourseTreeResponse> getAllTrees();
+
+    Page<CourseTreeResponse> getTrees(Pageable pageable);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/course/CourseServiceImp.java
+========================================
+package com.adrar.skillforge.service.course;
+
+import com.adrar.skillforge.dto.course.CourseTreeResponse;
+import com.adrar.skillforge.dto.course.CreateCourseRequest;
+import com.adrar.skillforge.dto.course.LessonTreeResponse;
+import com.adrar.skillforge.dto.course.ModuleTreeResponse;
+import com.adrar.skillforge.dto.course.PatchCourseRequest;
+import com.adrar.skillforge.dto.course.UpdateCourseRequest;
+import com.adrar.skillforge.entity.Course;
+import com.adrar.skillforge.entity.Lesson;
+import com.adrar.skillforge.entity.Module;
+import com.adrar.skillforge.exception.NotFoundException;
+import com.adrar.skillforge.repository.CourseRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@Service
+public class CourseServiceImp implements CourseService {
+
+    private final CourseRepository courseRepository;
+
+    public CourseServiceImp(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
+
+    @Override
+    public Course findByPublicId(UUID publicId) {
+        return courseRepository.findByPublicId(publicId)
+            .orElseThrow(() -> new NotFoundException("Cours introuvable: " + publicId));
+    }
+
+    @Override
+    public Page<Course> findAll(Pageable pageable) {
+        return courseRepository.findAll(pageable);
+    }
+
+    @Override
+    public Course create(CreateCourseRequest request) {
+        Course course = new Course(request.title(), request.description());
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public Course update(UUID publicId, UpdateCourseRequest request) {
+        Course course = findByPublicId(publicId);
+        course.setTitle(request.title());
+        course.setDescription(request.description());
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public Course patch(UUID publicId, PatchCourseRequest request) {
+        Course course = findByPublicId(publicId);
+
+        if (request.title() != null && !request.title().isBlank()) {
+            course.setTitle(request.title());
+        }
+        if (request.description() != null) {
+            course.setDescription(request.description());
+        }
+
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public void deleteByPublicId(UUID publicId) {
+        if (!courseRepository.existsByPublicId(publicId)) {
+            throw new NotFoundException("Cours introuvable: " + publicId);
+        }
+        courseRepository.deleteByPublicId(publicId);
+    }
+
+    @Override
+    public CourseTreeResponse getTree(UUID coursePublicId) {
+        Course course = courseRepository.findTreeByPublicId(coursePublicId)
+            .orElseThrow(() -> new NotFoundException("Cours introuvable: " + coursePublicId));
+
+        return toTree(course);
+    }
+
+    @Override
+    public List<CourseTreeResponse> getAllTrees() {
+        List<Course> courses = courseRepository.findAllTrees();
+
+        List<Course> uniqueCourses = dedupeCourses(courses).stream()
+            .sorted(Comparator.comparing(Course::getCreatedAt, Comparator.nullsLast(Comparator.naturalOrder())))
+            .toList();
+
+        return uniqueCourses.stream()
+            .map(this::toTree)
+            .toList();
+    }
+
+    @Override
+    public Page<CourseTreeResponse> getTrees(Pageable pageable) {
+        Page<Course> page = courseRepository.findAll(pageable);
+        List<Course> pageCourses = page.getContent();
+
+        if (pageCourses.isEmpty()) {
+            return new PageImpl<>(List.of(), pageable, page.getTotalElements());
+        }
+
+        List<UUID> publicIds = pageCourses.stream()
+            .map(Course::getPublicId)
+            .filter(id -> id != null)
+            .toList();
+
+        if (publicIds.isEmpty()) {
+            return new PageImpl<>(List.of(), pageable, page.getTotalElements());
+        }
+
+        List<Course> trees = courseRepository.findTreesByPublicIds(publicIds);
+
+        Map<UUID, Course> byId = dedupeCourses(trees).stream()
+            .collect(Collectors.toMap(Course::getPublicId, c -> c));
+
+        List<CourseTreeResponse> dtoOrdered = publicIds.stream()
+            .map(byId::get)
+            .filter(c -> c != null)
+            .map(this::toTree)
+            .toList();
+
+        return new PageImpl<>(dtoOrdered, pageable, page.getTotalElements());
+    }
+
+    private CourseTreeResponse toTree(Course course) {
+        List<Module> modules = dedupeModules(course.getModules()).stream()
+            .sorted(Comparator.comparing(Module::getPosition, Comparator.nullsLast(Integer::compareTo)))
+            .toList();
+
+        List<ModuleTreeResponse> moduleDtos = modules.stream()
+            .map(m -> {
+                List<Lesson> lessons = dedupeLessons(m.getLessons()).stream()
+                    .sorted(Comparator.comparing(Lesson::getPosition, Comparator.nullsLast(Integer::compareTo)))
+                    .toList();
+
+                List<LessonTreeResponse> lessonDtos = lessons.stream()
+                    .map(l -> new LessonTreeResponse(
+                        l.getPublicId(),
+                        l.getTitle(),
+                        l.getPosition(),
+                        l.getContent(),
+                        l.getCreatedAt()
+                    ))
+                    .toList();
+
+                return new ModuleTreeResponse(
+                    m.getPublicId(),
+                    m.getTitle(),
+                    m.getPosition(),
+                    m.getCreatedAt(),
+                    lessonDtos
+                );
+            })
+            .toList();
+
+        return new CourseTreeResponse(
+            course.getPublicId(),
+            course.getTitle(),
+            course.getDescription(),
+            course.getCreatedAt(),
+            moduleDtos
+        );
+    }
+
+    private List<Course> dedupeCourses(List<Course> courses) {
+        if (courses == null || courses.isEmpty()) return List.of();
+
+        LinkedHashMap<UUID, Course> map = new LinkedHashMap<>();
+        for (Course c : courses) {
+            if (c != null && c.getPublicId() != null && !map.containsKey(c.getPublicId())) {
+                map.put(c.getPublicId(), c);
+            }
+        }
+        return List.copyOf(map.values());
+    }
+
+    private List<Module> dedupeModules(List<Module> modules) {
+        if (modules == null || modules.isEmpty()) return List.of();
+
+        LinkedHashMap<UUID, Module> map = new LinkedHashMap<>();
+        for (Module m : modules) {
+            if (m != null && m.getPublicId() != null && !map.containsKey(m.getPublicId())) {
+                map.put(m.getPublicId(), m);
+            }
+        }
+        return List.copyOf(map.values());
+    }
+
+    private List<Lesson> dedupeLessons(List<Lesson> lessons) {
+        if (lessons == null || lessons.isEmpty()) return List.of();
+
+        LinkedHashMap<UUID, Lesson> map = new LinkedHashMap<>();
+        for (Lesson l : lessons) {
+            if (l != null && l.getPublicId() != null && !map.containsKey(l.getPublicId())) {
+                map.put(l.getPublicId(), l);
+            }
+        }
+        return List.copyOf(map.values());
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/course/CourseTreeResponse.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+public record CourseTreeResponse(
+    UUID publicId,
+    String title,
+    String description,
+    Instant createdAt,
+    List<ModuleTreeResponse> modules
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/course/LessonTreeResponse.java
+========================================
+package com.adrar.skillforge.dto.course;
+
+import java.time.Instant;
+import java.util.UUID;
+
+public record LessonTreeResponse(
+    UUID publicId,
+    String title,
+    Integer position,
+    String content,
+    Instant createdAt
+) {}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/lesson/LessonService.java
+========================================
+package com.adrar.skillforge.service.lesson;
+
+import com.adrar.skillforge.dto.lesson.CreateLessonRequest;
+import com.adrar.skillforge.dto.lesson.PatchLessonRequest;
+import com.adrar.skillforge.entity.Lesson;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface LessonService {
+
+    Lesson findByPublicId(UUID publicId);
+
+    List<Lesson> findAllByModule(UUID modulePublicId);
+
+    Lesson create(UUID modulePublicId, CreateLessonRequest request);
+
+    Lesson patch(UUID lessonPublicId, PatchLessonRequest request);
+
+    void delete(UUID lessonPublicId);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/lesson/LessonServiceImp.java
+========================================
+package com.adrar.skillforge.service.lesson;
+
+import com.adrar.skillforge.dto.lesson.CreateLessonRequest;
+import com.adrar.skillforge.dto.lesson.PatchLessonRequest;
+import com.adrar.skillforge.entity.Lesson;
+import com.adrar.skillforge.entity.Module;
+import com.adrar.skillforge.exception.NotFoundException;
+import com.adrar.skillforge.repository.LessonRepository;
+import com.adrar.skillforge.repository.ModuleRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class LessonServiceImp implements LessonService {
+
+    private final LessonRepository lessonRepository;
+    private final ModuleRepository moduleRepository;
+
+    public LessonServiceImp(LessonRepository lessonRepository, ModuleRepository moduleRepository) {
+        this.lessonRepository = lessonRepository;
+        this.moduleRepository = moduleRepository;
+    }
+
+    @Override
+    public Lesson findByPublicId(UUID publicId) {
+        return lessonRepository.findByPublicId(publicId)
+            .orElseThrow(() -> new NotFoundException("Leçon introuvable: " + publicId));
+    }
+
+    @Override
+    public List<Lesson> findAllByModule(UUID modulePublicId) {
+        return lessonRepository.findAllByModule_PublicIdOrderByPositionAsc(modulePublicId);
+    }
+
+    @Override
+    public Lesson create(UUID modulePublicId, CreateLessonRequest request) {
+        Module module = moduleRepository.findByPublicId(modulePublicId)
+            .orElseThrow(() -> new NotFoundException("Module introuvable: " + modulePublicId));
+
+        Integer position = request.position();
+        if (position == null) {
+            position = module.getLessons().size() + 1;
+        }
+
+        Lesson lesson = new Lesson(request.title(), position, request.content());
+        lesson.setModule(module);
+
+        return lessonRepository.save(lesson);
+    }
+
+    @Override
+    public Lesson patch(UUID lessonPublicId, PatchLessonRequest request) {
+        Lesson lesson = findByPublicId(lessonPublicId);
+
+        if (request.title() != null && !request.title().isBlank()) {
+            lesson.setTitle(request.title());
+        }
+
+        if (request.position() != null) {
+            lesson.setPosition(request.position());
+        }
+
+        if (request.content() != null) {
+            lesson.setContent(request.content());
+        }
+
+        return lessonRepository.save(lesson);
+    }
+
+    @Override
+    public void delete(UUID lessonPublicId) {
+        if (!lessonRepository.existsByPublicId(lessonPublicId)) {
+            throw new NotFoundException("Leçon introuvable: " + lessonPublicId);
+        }
+        lessonRepository.deleteByPublicId(lessonPublicId);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/module/ModuleService.java
+========================================
+package com.adrar.skillforge.service.module;
+
+import com.adrar.skillforge.dto.module.CreateModuleRequest;
+import com.adrar.skillforge.dto.module.PatchModuleRequest;
+import com.adrar.skillforge.entity.Module;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface ModuleService {
+
+    Module findByPublicId(UUID publicId);
+
+    List<Module> findAllByCourse(UUID coursePublicId);
+
+    Module create(UUID coursePublicId, CreateModuleRequest request);
+
+    Module patch(UUID modulePublicId, PatchModuleRequest request);
+
+    void delete(UUID modulePublicId);
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/module/ModuleServiceImp.java
+========================================
+package com.adrar.skillforge.service.module;
+
+import com.adrar.skillforge.dto.module.CreateModuleRequest;
+import com.adrar.skillforge.dto.module.PatchModuleRequest;
+import com.adrar.skillforge.entity.Course;
+import com.adrar.skillforge.entity.Module;
+import com.adrar.skillforge.exception.NotFoundException;
+import com.adrar.skillforge.repository.CourseRepository;
+import com.adrar.skillforge.repository.ModuleRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class ModuleServiceImp implements ModuleService {
+
+    private final ModuleRepository moduleRepository;
+    private final CourseRepository courseRepository;
+
+    public ModuleServiceImp(ModuleRepository moduleRepository, CourseRepository courseRepository) {
+        this.moduleRepository = moduleRepository;
+        this.courseRepository = courseRepository;
+    }
+
+    @Override
+    public Module findByPublicId(UUID publicId) {
+        return moduleRepository.findByPublicId(publicId)
+            .orElseThrow(() -> new NotFoundException("Module introuvable: " + publicId));
+    }
+
+    @Override
+    public List<Module> findAllByCourse(UUID coursePublicId) {
+        return moduleRepository.findAllByCourse_PublicIdOrderByPositionAsc(coursePublicId);
+    }
+
+    @Override
+    public Module create(UUID coursePublicId, CreateModuleRequest request) {
+        Course course = courseRepository.findByPublicId(coursePublicId)
+            .orElseThrow(() -> new NotFoundException("Cours introuvable: " + coursePublicId));
+
+        Integer position = request.position();
+        if (position == null) {
+            position = course.getModules().size() + 1;
+        }
+
+        Module module = new Module(request.title(), position);
+        module.setCourse(course);
+
+        return moduleRepository.save(module);
+    }
+
+    @Override
+    public Module patch(UUID modulePublicId, PatchModuleRequest request) {
+        Module module = findByPublicId(modulePublicId);
+
+        if (request.title() != null && !request.title().isBlank()) {
+            module.setTitle(request.title());
+        }
+
+        if (request.position() != null) {
+            module.setPosition(request.position());
+        }
+
+        return moduleRepository.save(module);
+    }
+
+    @Override
+    public void delete(UUID modulePublicId) {
+        if (!moduleRepository.existsByPublicId(modulePublicId)) {
+            throw new NotFoundException("Module introuvable: " + modulePublicId);
+        }
+        moduleRepository.deleteByPublicId(modulePublicId);
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/user/UserService.java
+========================================
+package com.adrar.skillforge.service.user;
+
+import com.adrar.skillforge.dto.user.CreateUserRequest;
+import com.adrar.skillforge.dto.user.PatchUserRequest;
+import com.adrar.skillforge.dto.user.UpdateUserRequest;
+import com.adrar.skillforge.entity.User;
+import com.adrar.skillforge.entity.Role;
+
+import java.util.Set;
+import java.util.List;
+import java.util.UUID;
+
+public interface UserService {
+    User findByPublicId(UUID publicId);
+    List<User> findAll();
+    User create(CreateUserRequest request);
+    User update(UUID publicId, UpdateUserRequest request);
+    User patch(UUID publicId, PatchUserRequest request);
+    void deleteByPublicId(UUID publicId);
+    boolean emailExists(String email);
+
+    Set<Role> setRoles(UUID publicId, Set<String> roles);
+    User addRole(UUID publicId, String role);
+    User removeRole(UUID publicId, String role);
+
+
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/user/UserServiceImp.java
+========================================
+package com.adrar.skillforge.service.user;
+
+import com.adrar.skillforge.dto.user.CreateUserRequest;
+import com.adrar.skillforge.dto.user.PatchUserRequest;
+import com.adrar.skillforge.dto.user.UpdateUserRequest;
+import com.adrar.skillforge.entity.Role;
+import com.adrar.skillforge.entity.User;
+import com.adrar.skillforge.exception.BadRequestException;
+import com.adrar.skillforge.exception.ConflictException;
+import com.adrar.skillforge.exception.NotFoundException;
+import com.adrar.skillforge.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@Service
+public class UserServiceImp implements UserService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public User findByPublicId(UUID publicId) {
+        return userRepository.findByPublicId(publicId)
+            .orElseThrow(() -> new NotFoundException("Utilisateur introuvable: " + publicId));
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User create(CreateUserRequest request) {
+        if (userRepository.existsByEmail(request.email())) {
+            throw new ConflictException("Cet email est déjà utilisé");
+        }
+        if (userRepository.existsByUsername(request.username())) {
+            throw new ConflictException("Ce nom d'utilisateur est déjà utilisé");
+        }
+
+        String hashedPassword = passwordEncoder.encode(request.password());
+
+        User user = new User(
+            request.username(),
+            request.email(),
+            hashedPassword
+        );
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User update(UUID publicId, UpdateUserRequest request) {
+        User user = findByPublicId(publicId);
+
+        if (request.username() != null && !request.username().isBlank()
+            && !request.username().equals(user.getUsername())
+            && userRepository.existsByUsername(request.username())) {
+            throw new ConflictException("Ce nom d'utilisateur est déjà utilisé");
+        }
+
+        if (request.email() != null && !request.email().isBlank()
+            && !request.email().equals(user.getEmail())
+            && userRepository.existsByEmail(request.email())) {
+            throw new ConflictException("Cet email est déjà utilisé");
+        }
+
+        user.setUsername(request.username());
+        user.setEmail(request.email());
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User patch(UUID publicId, PatchUserRequest request) {
+        User user = findByPublicId(publicId);
+
+        if (request.username() != null && !request.username().isBlank()) {
+            if (!request.username().equals(user.getUsername())
+                && userRepository.existsByUsername(request.username())) {
+                throw new ConflictException("Ce nom d'utilisateur est déjà utilisé");
+            }
+            user.setUsername(request.username());
+        }
+
+        if (request.email() != null && !request.email().isBlank()) {
+            if (!request.email().equals(user.getEmail())
+                && userRepository.existsByEmail(request.email())) {
+                throw new ConflictException("Cet email est déjà utilisé");
+            }
+            user.setEmail(request.email());
+        }
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteByPublicId(UUID publicId) {
+        if (!userRepository.existsByPublicId(publicId)) {
+            throw new NotFoundException("Utilisateur introuvable: " + publicId);
+        }
+        userRepository.deleteByPublicId(publicId);
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Set<Role> setRoles(UUID publicId, Set<String> roles) {
+        User user = findByPublicId(publicId);
+
+        Set<Role> parsed = roles.stream()
+            .filter(r -> r != null && !r.isBlank())
+            .map(r -> r.trim().toUpperCase(Locale.ROOT))
+            .map(this::parseRoleOrThrow)
+            .collect(Collectors.toSet());
+
+        if (parsed.isEmpty()) {
+            throw new BadRequestException("La liste des rôles ne peut pas être vide.");
+        }
+
+        user.setRoles(parsed);
+        userRepository.save(user);
+
+        return user.getRoles();
+    }
+
+    @Override
+    public User addRole(UUID publicId, String role) {
+        User user = findByPublicId(publicId);
+        Role parsed = parseRoleOrThrow(role);
+
+        user.addRole(parsed);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User removeRole(UUID publicId, String role) {
+        User user = findByPublicId(publicId);
+        Role parsed = parseRoleOrThrow(role);
+
+        user.removeRole(parsed);
+
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            user.addRole(Role.STUDENT);
+        }
+
+        return userRepository.save(user);
+    }
+
+    private Role parseRoleOrThrow(String role) {
+        if (role == null || role.isBlank()) {
+            throw new BadRequestException("Rôle invalide.");
+        }
+        try {
+            return Role.valueOf(role.trim().toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException ex) {
+            throw new BadRequestException("Rôle inconnu: " + role + ". Valeurs: STUDENT, TEACHER, ADMIN");
+        }
+    }
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/service/user/UserValidator.java
+========================================
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/main/java/com/adrar/skillforge/SkillforgeApplication.java
+========================================
+package com.adrar.skillforge;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+//On va importe rla librairi pour générer un UUID et tenter de l'afficher dans la console
+import com.github.f4b6a3.uuid.UuidCreator;
+//On importe les types
+import java.util.UUID;
+
+//On appelle l'interface command line runner pour l'utiliser au démarrage
+
+import org.springframework.boot.CommandLineRunner;
+
+@SpringBootApplication
+public class SkillforgeApplication implements CommandLineRunner{
+
+	public static void main(String[] args) {
+		SpringApplication.run(SkillforgeApplication.class, args);
+	}
+	@Override
+	public void run(String... args){
+		UUID testId = UuidCreator.getTimeOrderedEpoch();
+		System.out.println("UUID Généré: " + testId);
+	}
+}
+
+
+
+========================================
+📄 FILE: ./backend/skillforge/src/test/java/com/adrar/skillforge/SkillforgeApplicationTests.java
+========================================
+package com.adrar.skillforge;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SkillforgeApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+
+========================================
+📄 FILE: ./docker-compose.yaml
+========================================
+services:
+  db:
+    image: postgres:16
+    container_name: skillforge-postgres
+    environment:
+      POSTGRES_DB: skillforge
+      POSTGRES_USER: skillforge
+      POSTGRES_PASSWORD: skillforgepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - skillforge_pgdata:/var/lib/postgresql/data
+
+  api:
+    container_name: skillforge-api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/skillforge
+      SPRING_DATASOURCE_USERNAME: skillforge
+      SPRING_DATASOURCE_PASSWORD: skillforgepass
+    depends_on:
+      - db
+
+volumes:
+  skillforge_pgdata:
+
+
+

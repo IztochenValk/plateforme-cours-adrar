@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: skillforge-postgres
+    environment:
+      POSTGRES_DB: skillforge
+      POSTGRES_USER: skillforge
+      POSTGRES_PASSWORD: skillforgepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - skillforge_pgdata:/var/lib/postgresql/data
+
+  api:
+    container_name: skillforge-api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/skillforge
+      SPRING_DATASOURCE_USERNAME: skillforge
+      SPRING_DATASOURCE_PASSWORD: skillforgepass
+    depends_on:
+      - db
+
+volumes:
+  skillforge_pgdata:
